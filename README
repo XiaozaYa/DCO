@@ -1,0 +1,30 @@
+
+>_< This is a very easy challenge, and I hope the following content will be helpful to you.
+
+CONFIG_SLUB=y
+CONFIG_SLAB_FREELIST_RANDOM=y
+CONFIG_SLAB_FREELIST_HARDENED=y
+CONFIG_HARDENED_USERCOPY=y
+CONFIG_STATIC_USERMODEHELPER=y
+CONFIG_STATIC_USERMODEHELPER_PATH=""
+
+"""
+kheap.c
+	the source code
+
+Makefile
+	compile LKM
+
+kmalloc-xxx
+	kheap_xxx_double_free_ko is the kheap.ko
+	exploit.c is the exploit for the kmalloc-xxx size double free
+
+mkdir fs
+cd fs
+cpio -idvm < ../rootfs.cpio
+
+cd ..
+cp kmalloc-xxx/khea_xxx_double_free_ko  fs/kheap.ko
+
+then pack
+"""
